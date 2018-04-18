@@ -1,0 +1,1440 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Sherlock Cluster documentation">
+      
+      
+        <link rel="canonical" href="https://www.sherlock.stanford.edu/docs/user-guide/running-jobs/">
+      
+      
+        <meta name="author" content="Kilian Cavalotti">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../../img/logo_small.png">
+      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.7.1">
+    
+    
+      
+        <title>Running jobs - Sherlock</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.78aab2dc.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.583543f3.css">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+      
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    
+      <link rel="stylesheet" href="../../../">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="stanford" data-md-color-accent="stanford">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    
+      <a href="#login-nodes" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://www.sherlock.stanford.edu" title="Sherlock" class="md-header-nav__button md-logo">
+          
+            <img src="../../../img/logo_small.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Sherlock
+              </span>
+              <span class="md-header-nav__topic">
+                Running jobs
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/stanford-rc/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      SRCC <i class="fa fa-heart-o"></i> Open Source
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../" title="Overview" class="md-tabs__link">
+          Overview
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../getting-started/prerequisites/" title="Getting Started" class="md-tabs__link">
+          Getting Started
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    
+    
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../storage/" title="User guide" class="md-tabs__link">
+          User guide
+        </a>
+      
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../software/" title="Software" class="md-tabs__link">
+          Software
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../advanced-topics/connection/" title="Advanced topics" class="md-tabs__link">
+          Advanced topics
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="drawer">
+    <span class="md-nav__button md-logo">
+      
+        <img src="../../../img/logo_small.png" width="48" height="48">
+      
+    </span>
+    Sherlock
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/stanford-rc/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      SRCC <i class="fa fa-heart-o"></i> Open Source
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      Overview
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        Overview
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../overview/concepts/" title="Concepts" class="md-nav__link">
+      Concepts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../overview/glossary/" title="Glossary" class="md-nav__link">
+      Glossary
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../overview/transition/" title="Sherlock 2.0" class="md-nav__link">
+      Sherlock 2.0
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../overview/specs/" title="Tech specs" class="md-nav__link">
+      Tech specs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../overview/status/" title="Status" class="md-nav__link">
+      Status
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../overview/about/" title="About" class="md-nav__link">
+      About
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Getting Started
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Getting Started
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../getting-started/prerequisites/" title="Prerequisites" class="md-nav__link">
+      Prerequisites
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../getting-started/connecting/" title="Connecting" class="md-nav__link">
+      Connecting
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../getting-started/submitting/" title="Submitting jobs" class="md-nav__link">
+      Submitting jobs
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      User guide
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        User guide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1">
+    
+    <label class="md-nav__link" for="nav-3-1">
+      Storage
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        Storage
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../storage/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../storage/filesystems/" title="Filesystems" class="md-nav__link">
+      Filesystems
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../storage/data-sharing/" title="Data sharing" class="md-nav__link">
+      Data sharing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../storage/data-protection/" title="Data protection" class="md-nav__link">
+      Data protection
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../storage/data-transfer/" title="Data transfer" class="md-nav__link">
+      Data transfer
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Running jobs
+      </label>
+    
+    <a href="./" title="Running jobs" class="md-nav__link md-nav__link--active">
+      Running jobs
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#login-nodes" title="Login nodes" class="md-nav__link">
+    Login nodes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slurm-commands" title="Slurm commands" class="md-nav__link">
+    Slurm commands
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interactive-jobs" title="Interactive jobs" class="md-nav__link">
+    Interactive jobs
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dedicated-nodes" title="Dedicated nodes" class="md-nav__link">
+    Dedicated nodes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compute-nodes" title="Compute nodes" class="md-nav__link">
+    Compute nodes
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connecting-to-nodes" title="Connecting to nodes" class="md-nav__link">
+    Connecting to nodes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#batch-jobs" title="Batch jobs" class="md-nav__link">
+    Batch jobs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recurring-jobs" title="Recurring jobs" class="md-nav__link">
+    Recurring jobs
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" title="Example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
+    
+    <label class="md-nav__link" for="nav-3-3">
+      Specialized resources
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-3">
+        Specialized resources
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../gpu/" title="GPU nodes" class="md-nav__link">
+      GPU nodes
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../troubleshoot/" title="Troubleshooting" class="md-nav__link">
+      Troubleshooting
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Software
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Software
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../software/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../software/list/" title="List" class="md-nav__link">
+      List
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../software/modules/" title="Modules" class="md-nav__link">
+      Modules
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../software/install/" title="Installation" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5">
+    
+    <label class="md-nav__link" for="nav-4-5">
+      Usage
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        Usage
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../software/using/perl/" title="Perl" class="md-nav__link">
+      Perl
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Advanced topics
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Advanced topics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../advanced-topics/connection/" title="Connection" class="md-nav__link">
+      Connection
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#login-nodes" title="Login nodes" class="md-nav__link">
+    Login nodes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slurm-commands" title="Slurm commands" class="md-nav__link">
+    Slurm commands
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interactive-jobs" title="Interactive jobs" class="md-nav__link">
+    Interactive jobs
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dedicated-nodes" title="Dedicated nodes" class="md-nav__link">
+    Dedicated nodes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compute-nodes" title="Compute nodes" class="md-nav__link">
+    Compute nodes
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connecting-to-nodes" title="Connecting to nodes" class="md-nav__link">
+    Connecting to nodes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#batch-jobs" title="Batch jobs" class="md-nav__link">
+    Batch jobs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recurring-jobs" title="Recurring jobs" class="md-nav__link">
+    Recurring jobs
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" title="Example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/stanford-rc/www.sherlock.stanford.edu/edit/docs/src/docs/user-guide/running-jobs.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                  <h1>Running jobs</h1>
+                
+                <h2 id="login-nodes">Login nodes<a class="headerlink" href="#login-nodes" title="Permanent link">#</a></h2>
+<div class="admonition danger">
+<p class="admonition-title">Login nodes are not for computing</p>
+<p>Login nodes are shared among many users and therefore must not be
+used to run computationally intensive tasks. Those should be submitted to
+the scheduler which will dispatch them on compute nodes.</p>
+</div>
+<p>The key principle of a shared computing environment is that resources are
+shared among users and must be scheduled. It is <strong>mandatory</strong> to schedule work
+by submitting jobs to the scheduler on Sherlock. And since login nodes are a
+shared resource, they must not be used to execute computing tasks.</p>
+<p>Acceptable use of login nodes include:</p>
+<ul>
+<li>lightweight file transfers,</li>
+<li>script and configuration file editing,</li>
+<li>job submission and monitoring.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Resource limits are enforced</p>
+<p>To minimize disruption and ensure a confortable working environment for
+users, resource limits are enforced on login nodes, and processes started
+there will automatically be terminated if their resource usage (including
+CPU time, memory and run time) exceed those limits.</p>
+</div>
+<h2 id="slurm-commands">Slurm commands<a class="headerlink" href="#slurm-commands" title="Permanent link">#</a></h2>
+<p>Slurm allows requesting resources and submitting jobs in a variety of ways. The
+main Slurm commands to submit jobs are listed in the table below:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>salloc</code></td>
+<td>Request resources and allocates them to a job</td>
+<td>Starts a new shell, but does not execute anything</td>
+</tr>
+<tr>
+<td><code>srun</code></td>
+<td>Request resources and runs a command on the allocated compute node(s)</td>
+<td>Blocking command: will not return until the job ends</td>
+</tr>
+<tr>
+<td><code>sbatch</code></td>
+<td>Request resources and runs a script on the allocated compute node(s)</td>
+<td>Asynchronous command: will return as soon as the job is submitted</td>
+</tr>
+</tbody>
+</table>
+<h2 id="interactive-jobs">Interactive jobs<a class="headerlink" href="#interactive-jobs" title="Permanent link">#</a></h2>
+<h3 id="dedicated-nodes">Dedicated nodes<a class="headerlink" href="#dedicated-nodes" title="Permanent link">#</a></h3>
+<p>Interactive jobs allow users to log in to a compute node to run commands
+interactively on the command line. They could be an integral
+part of an interactive programming and debugging workflow. The simplest way to
+establish an interactive session on Sherlock is to use the <code>sdev</code> command:</p>
+<pre class="codehilite"><code>$ sdev</code></pre>
+
+<p>This will open a login shell using one core and 4 GB of memory on one node for
+one hour. The <code>sdev</code> sessions run on dedicated compute nodes. This ensures
+minimal wait times when you need to access a node for testing script, debug
+code or any kind of interactive work.</p>
+<p><code>sdev</code> also provides X11 forwarding via the submission host (typically the
+login node you're connected to) and can thus be used to run GUI applications.</p>
+<h3 id="compute-nodes">Compute nodes<a class="headerlink" href="#compute-nodes" title="Permanent link">#</a></h3>
+<p>If you need more resources<sup id="fnref:dev_limits"><a class="footnote-ref" href="#fn:dev_limits" rel="footnote">1</a></sup>, you can pass options to <code>sdev</code>, to
+request more CPU cores, more nodes, or even run in a different partition.
+<code>sdev -h</code> will provide more information:</p>
+<pre class="codehilite"><code>$ sdev -h
+sdev: start an interactive shell on a compute node
+
+Usage: sdev [OPTIONS]
+    Optional arguments:
+        -n      number of CPU cores to request (default: 1)
+        -N      number of nodes to request (default: 1)
+        -m      memory amount to request (default: 4GB)
+        -p      partition to run the job in (default: dev)
+        -t      time limit (default: 01:00:00, ie. 1 hour)
+        -r      allocate resources from the named reservation (default: none)
+        -J      job name (default: sdev)
+        -q      quality of service to request for the job (default: normal)
+</code></pre>
+
+<p>Another way to get an interactive session on a compute node is to use <code>srun</code> to
+execute a shell through the scheduler. For instance, to start a <code>bash</code> session
+on a compute node, with the default resource requirements (one core for 2
+hours), you can run:</p>
+<pre class="codehilite"><code>$ srun --pty bash</code></pre>
+
+<p>The main advantage of this approach is that it will allow you to specify the
+whole range of submission options that <code>sdev</code> may not support.</p>
+<p>Finally, if you prefer to submit an existing job script or other executable as
+an interactive job, you can use the <code>salloc</code> command:</p>
+<pre class="codehilite"><code>$ salloc script.sh</code></pre>
+
+<p>If you don't provide a command to execute, <code>salloc</code> will start a Slurm job and
+allocate resources for it, but it will not automatically connect you to the
+allocated node(s). It will only start a new shell on the same node you launched
+<code>salloc</code> from, and set up the appropriate <code>$SLURM_*</code> environment
+variables. So you will typically need to look at them to see
+what nodes have been assigned to your job. For instance:</p>
+<pre class="codehilite"><code>$ salloc
+salloc: Granted job allocation 655914
+$ echo $SLURM_NODELIST
+sh-101-55
+$ ssh sh-101-55
+[...]
+sh-101-55 ~ $</code></pre>
+
+<h4 id="connecting-to-nodes">Connecting to nodes<a class="headerlink" href="#connecting-to-nodes" title="Permanent link">#</a></h4>
+<div class="admonition warning">
+<p class="admonition-title">Login to compute nodes</p>
+<p>Users are not allowed to login to compute nodes unless they have a job
+running there.</p>
+</div>
+<p>If you SSH to a compute node without any active job allocation, you'll be
+greeted by the following message:</p>
+<pre class="codehilite"><code>$ ssh sh-101-01
+Access denied by pam_slurm_adopt: you have no active jobs on this node
+Connection closed
+$</code></pre>
+
+<p>Once you have a job running on a node, you can SSH directly to it and
+run additional processes<sup id="fnref:ssh_job_limits"><a class="footnote-ref" href="#fn:ssh_job_limits" rel="footnote">2</a></sup>, or observe how you application
+behaves, debug issues, and so on.</p>
+<p>The <code>salloc</code> command supports the same parameters as <code>sbatch</code>, and can override
+any default configuration. Note that any <code>#SBATCH</code> directive in your job script
+will not be interpreted by <code>salloc</code> when it is executed in this way. You must
+specify all arguments directly on the command line for them to be taken into
+account.</p>
+<h2 id="batch-jobs">Batch jobs<a class="headerlink" href="#batch-jobs" title="Permanent link">#</a></h2>
+<div class="admonition bug">
+<p class="admonition-title"><img alt="🚧" class="emojione" src="https://cdn.jsdelivr.net/emojione/assets/svg/1f6a7.svg" title=":construction:" /> Work in progress <img alt="🚧" class="emojione" src="https://cdn.jsdelivr.net/emojione/assets/svg/1f6a7.svg" title=":construction:" /></p>
+<p>This page is a work in progress and is not complete yet. We are actively
+working on adding more content and information.</p>
+</div>
+<h2 id="recurring-jobs">Recurring jobs<a class="headerlink" href="#recurring-jobs" title="Permanent link">#</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code>Cron</code> tasks are not supported on Sherlock.</p>
+</div>
+<p>Users are not allowed to create <code>cron</code> jobs on Sherlock, for a variety of
+reasons:</p>
+<ul>
+<li>resources limits cannot be easily enforced in <code>cron</code> jobs, meaning that a
+  single user can end up monopolizing all the resources of a login node,</li>
+<li>no amount of resources can be guaranteed when executing a <code>cron</code> job, leading
+  to unreliable runtime and performance,</li>
+<li>user <code>cron</code> jobs have the potential of bringing down whole
+  nodes by creating fork bombs, if they're not carefully crafted and tested,</li>
+<li>compute and login nodes could be redeployed at any time, meaning that
+  <code>cron</code> jobs scheduled there could go away without the user being notified,
+  and cause all sorts of unexpected results,</li>
+<li><code>cron</code> jobs could be mistakenly scheduled on several nodes and run multiple
+  times, which could result in corrupted files.</li>
+</ul>
+<p>As an alternative, if you need to run recurring tasks at regular intervals, we
+recommend the following approach: by using the <code>--begin</code> job submission option,
+and creating a job that resubmits itself once it's done, you can virtually
+emulate the behavior and benefits of a <code>cron</code> job, without its disadvantages:
+your task will be scheduled on a compute node, and use all of the resources it
+requested, without being impacted by anything else.</p>
+<p>Depending on your recurring job's specificities, where you submit it and the
+state of the cluster at the time of execution, the starting time of that task
+may not be guaranteed and result in a delay in execution, as it will be
+scheduled by Slurm like any other jobs. Typical recurring jobs, such as file
+synchronization, database updates or backup tasks don't require strict starting
+times, though, so most users find this an acceptable trade-off.</p>
+<p>The table below summarizes the advantages and inconvenients of each approach:</p>
+<!-- color styles for yes/no checks -->
+
+<style>
+.yes { color: darkgreen; }
+.no  { color: darkred;   }
+</style>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="center">Cron tasks</th>
+<th align="center">Recurring jobs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Authorized on Sherlock</td>
+<td align="center"><b class="no"><i class="fa fa-times"></i></b></td>
+<td align="center"><b class="yes"><i class="fa fa-check"></i></b></td>
+</tr>
+<tr>
+<td>Dedicated resources for the task</td>
+<td align="center"><b class="no"><i class="fa fa-times"></i></b></td>
+<td align="center"><b class="yes"><i class="fa fa-check"></i></b></td>
+</tr>
+<tr>
+<td>Persistent across node redeployments</td>
+<td align="center"><b class="no"><i class="fa fa-times"></i></b></td>
+<td align="center"><b class="yes"><i class="fa fa-check"></i></b></td>
+</tr>
+<tr>
+<td>Unique, controlled execution</td>
+<td align="center"><b class="no"><i class="fa fa-times"></i></b></td>
+<td align="center"><b class="yes"><i class="fa fa-check"></i></b></td>
+</tr>
+<tr>
+<td>Potential execution delay</td>
+<td align="center"><b class="yes"><i class="fa fa-check"></i></b></td>
+<td align="center"><b class="no"><i class="fa fa-times"></i></b></td>
+</tr>
+</tbody>
+</table>
+<h3 id="example">Example<a class="headerlink" href="#example" title="Permanent link">#</a></h3>
+<p>The script below presents an example of such a recurring, self-resubmitting
+job, that would emulate a <code>cron</code> task. It will append a timestamped line to a
+<code>cron.log</code> file in your <code>$HOME</code> directory and run every 7 days.</p>
+<pre class="codehilite"><code class="language-bash">#!/bin/bash
+#SBATCH --job-name=cron
+#SBATCH --begin=now+7days
+#SBATCH --dependency=singleton
+#SBATCH --time=00:02:00
+#SBATCH --mail-type=FAIL
+
+
+## Insert you the command to run below. Here, we're just storing the date in a
+## cron.log file
+
+date -R &gt;&gt; $HOME/cron.log
+
+## Resubmit the job for the next execution
+sbatch $0</code></pre>
+
+<p>If the job payload (here the <code>date</code> command) fails for some reason and
+generates and error, the job will not be resubmitted, and the user will be
+notified by email.</p>
+<p>We encourage users to get familiar with the submission options used in this
+script by giving a look at the <code>sbatch</code> <a href="https://slurm.schedmd.com/sbatch.html">man page</a>, but some
+details are given below:</p>
+<table>
+<thead>
+<tr>
+<th>Submission&nbsp;option&nbsp;or&nbsp;command</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--job-name=cron</code></td>
+<td>makes it easy to identify the job, is used by the  <code>--dependency=singleton</code> option to identify identical jobs, and will allow  cancelling the job by name (because its jobid will change each time it's  submitted)</td>
+</tr>
+<tr>
+<td><code>--begin=now+7days</code></td>
+<td>will instruct the scheduler to not even consider the job   for scheduling before 7 days after it's been submitted</td>
+</tr>
+<tr>
+<td><code>--dependency=singleton</code></td>
+<td>will make sure that only one <code>cron</code> job runs at any given time</td>
+</tr>
+<tr>
+<td><code>--time=00:02:00</code></td>
+<td>runtime limit for the job (here 2 minutes). You'll need to adjust the value   depending on the task you need to run (shorter runtime requests usually   result in the job running closer to the clock mark)</td>
+</tr>
+<tr>
+<td><code>--mail-type=FAIL</code></td>
+<td>will send an email notification to the user if the job ever fails</td>
+</tr>
+<tr>
+<td><code>sbatch $0</code></td>
+<td>will resubmit the job script by calling its own name (<code>$0</code>)   after successful execution</td>
+</tr>
+</tbody>
+</table>
+<p>You can save the script as <code>cron.sbatch</code> or any other name, and submit it with:</p>
+<pre class="codehilite"><code>$ sbatch cron.sbatch</code></pre>
+
+<p>It will start running for the first time 7 days after
+you submit it, and it will continue to run until you cancel it with the
+following command (using the job name, as defined by the <code>--job-name</code> option):</p>
+<pre class="codehilite"><code>$ scancel -n cron</code></pre>
+
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:dev_limits">
+<p>The dedicated partition that <code>sdev</code> uses by default only allows
+  up to 2 cores and 8 GB or memory per user at any given time. So if you need
+  more resources for your interactive session, you may have to specify a
+  different partition. See the <a href="#partitions">Partitions</a> section for more
+  details.&#160;<a class="footnote-backref" href="#fnref:dev_limits" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:ssh_job_limits">
+<p>Please note that your SSH session will be attached to your
+  running job, and that resources used by that interactive shell will count
+  towards your job's resource limits. So if you start a process using large
+  amounts of memory via SSH while your job is running, you may hit the job's
+  memory limits, which will trigger its termination.&#160;<a class="footnote-backref" href="#fnref:ssh_job_limits" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../storage/data-transfer/" title="Data transfer" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Data transfer
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../gpu/" title="GPU nodes" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                GPU nodes
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2014 - 2018 &mdash; <a href='mailto:srcc-support@stanford.edu'>Stanford Research Computing Center</a>
+          </div>
+        
+        
+          
+          Made with <i class="fa fa-heart md-highlight"></i> in
+          <span class="md-footer-copyright__highlight">
+            <a href='https://www.google.com/maps/place/Stanford,+CA'>Stanford, California</a>
+          </span>
+        
+      </div>
+      
+        
+  <div class="md-footer-social">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+      <a href="https://srcc.stanford.edu" class="md-footer-social__link fa fa-globe"></a>
+    
+      <a href="https://github.com/stanford-rc" class="md-footer-social__link fa fa-github"></a>
+    
+      <a href="https://twitter.com/StanfordCompute" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://www.linkedin.com/school/1792/" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.79d56747.js"></script>
+      
+      <script>app.initialize({version:"0.17.3",url:{base:"../../.."}})</script>
+      
+        <script src="../../../"></script>
+      
+    
+    
+      
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-68034405-2","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+      
+    
+  </body>
+</html>
