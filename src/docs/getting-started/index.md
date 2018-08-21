@@ -94,6 +94,7 @@ A few tutorials we recommend are:
 
 More specifically about HPC and Research Computing:
 
+* [HPC Q&A site for people who do research computing][url_xsede] (Q&A site for people who do research computing)
 * [Intro to HPC][url_tuto_5] (HPC Carpentry)
 * [HPC in a day][url_tuto_4] (Software Carpentry}
 * [Research Computing Q&A][url_tuto_6] (Ask.Cyberinfrastructure)
@@ -142,6 +143,7 @@ For an introduction to shell scripting, you can refer to:
 [url_scripting]:    http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html
 [url_tuto_1]:       http://www.ee.surrey.ac.uk/Teaching/Unix/
 [url_tuto_2]:       http://www.doc.ic.ac.uk/~wjk/UnixIntro/
+[url_xsede]:        https://ask.cyberinfrastructure.org/
 [url_tuto_3]:       https://swcarpentry.github.io/shell-novice/
 [url_tuto_4]:       https://psteinb.github.io/hpc-in-a-day/
 [url_tuto_5]:       https://hpc-carpentry.github.io/hpc-intro/
