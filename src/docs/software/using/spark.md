@@ -78,6 +78,7 @@ Spark workers on each node, and allow each worker to use 8 cores:
 ## --------------------------------------
 
 # load the Spark module
+module load devel java
 module load spark
 
 # identify the Spark cluster with the Slurm jobid
